@@ -1,30 +1,71 @@
-const number = document.getElementById('number');
-const increase = document.getElementById('in');
-const reset = document.getElementById('re');
-const decrease = document.getElementById('de');
 
-let num = 0;
+const spanMin = document.querySelector('.min')
+const spanSec = document.querySelector('.sec')
 
-number.innerHTML = num;
+const playButton = document.querySelector('#play-button');
+const pauseButton = document.querySelector('#pause-button');
+const resetButton = document.querySelector('#reset-button');
 
-increase.addEventListener('click', () => {
-    num += 1;
-    number.innerHTML = num;
-    if (num > 0) {
-        number.style.color = '#0f0';
-    }
-})
+let min = 0;
+let sec = 0;
 
-reset.addEventListener('click', () => {
-    num = 0;
-    number.innerHTML = num;
-    number.style.color = '#fff'
-})
+let pause = false;
 
-decrease.addEventListener('click', () => {
-    num -= 1;
-    number.innerHTML = num;
-    if (num < 0) {
-        number.style.color = '#f00'
-    }
-})
+const updateSec = () => {
+    pause = false;
+    const intervalId = setInterval(() => {
+        if (!pause) {
+            if (sec < 59) {
+                sec++
+            } else {
+                sec = 0
+                min++
+            }
+            console.log(sec)
+            if (sec < 10) {
+                spanSec.innerHTML = `0${sec}`;
+            } else {
+                spanSec.innerHTML = `${sec}`;
+            }
+            if (min < 10) {
+                spanMin.innerHTML = `0${min}`;
+            } else {
+                spanMin.innerHTML = `${min}`;
+            }
+        }
+        if (pause) {
+            clearInterval(intervalId)
+        }
+    }, 1000)
+    playButton.removeEventListener('click', updateSec);
+    playButton.style.display = 'none';
+    pauseButton.style.display = 'inline';
+    resetButton.style.display = 'inline';
+}
+
+const stopSec = () => {
+    pause = true;
+    
+    playButton.addEventListener('click', updateSec);
+    playButton.style.display = 'inline';
+    resetButton.style.display = 'none';
+    pauseButton.style.display = 'none';
+}
+
+const resetSec = () => {
+
+    sec = 0;
+    min = 0;
+    spanMin.innerHTML = '00';
+    spanSec.innerHTML = '00';
+
+    playButton.style.display = 'inline';
+    resetButton.style.display = 'none';
+    pauseButton.style.display = 'none';
+    stopSec()
+}
+
+playButton.addEventListener('click', updateSec);
+pauseButton.addEventListener('click', stopSec);
+resetButton.addEventListener('click', resetSec);
+

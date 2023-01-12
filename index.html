@@ -9,12 +9,35 @@
 </head>
 <body>
     <div class="counter-box">
-        <h1>Counter</h1>
-        <div id="number">0</div>
-        <div class="buttons-box">
-            <button id="de">Decrease</button>
-            <button id="re">Reset</button>
-            <button id="in">Increase</button>
+        <div class="display-counter">
+            <div class="number-box">
+                <h1 class="number">
+                    <span class="min">00</span>
+                    :
+                    <span class="sec">00</span>
+                </h1>
+            </div>
+            <div class="controls-box">
+                <div class="controls">
+                    <button class="controls-button" id="reset-button">
+                        <svg width="100%" height="100%" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.99998 19.3103C9.99998 19.3103 14.6507 11.8622 19.5 9.99999C23.8748 8.31998 27.192 8.15542 31.5 9.99999C36.0258 11.9378 38.2715 14.7004 40 19.3103C41.6311 23.6605 41.7174 26.8901 40 31.2069C38.2345 35.6446 35.9043 38.1527 31.5 40C27.1784 41.8126 23.8883 41.6445 19.5 40C14.7662 38.226 9.99998 31.2069 9.99998 31.2069" stroke="white" stroke-width="5"/>
+                            <path d="M6.90824 16.1186L14.9708 19.2802L8.20151 24.6818L6.90824 16.1186Z" fill="white"/>
+                        </svg>
+                    </button>
+                    <button class="controls-button" id="play-button">
+                        <svg width="100%" height="100%" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M47.0296 24.5592L13.254 44.0003L13.3052 5.02923L47.0296 24.5592Z" fill="white"/>
+                        </svg>
+                    </button>
+                    <button class="controls-button" id="pause-button">
+                        <svg width="100%" height="100%" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="12" y="10" width="10" height="30" fill="white"/>
+                            <rect x="28" y="10" width="10" height="30" fill="white"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
     <script src="./script.js"></script>
